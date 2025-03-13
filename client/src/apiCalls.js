@@ -5,7 +5,7 @@ export const loginCall = async (userCredentials, dispatch) => {
         type: 'LOGIN_START',
     })
     try {
-        const res = await axios.post("/auth/login", userCredentials);
+        const res = await axios.post("https://socialappwithmessengerbackend.onrender.com/auth/login", userCredentials);
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         // console.log(res.data)
         // alert(res.message)

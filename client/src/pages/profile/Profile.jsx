@@ -17,7 +17,7 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const res = await axios.get(`/users?username=${params.username}`) //Passing by Query method
+      const res = await axios.get(`https://socialappwithmessengerbackend.onrender.com/users?username=${params.username}`) //Passing by Query method
       // console.log(res.data);
       setUser(res.data)
      // console.log(res.data)

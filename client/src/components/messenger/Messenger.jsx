@@ -57,7 +57,7 @@ const Messenger = () => {
     useEffect(() => {
         const getConversations = async () => {
             try {
-                const res = await axios.get("/conversations/" + user._id);
+                const res = await axios.get("https://socialappwithmessengerbackend.onrender.com/conversations/" + user._id);
                 setConversations(res.data);
             } catch (err) {
                 console.log(err);
@@ -69,7 +69,7 @@ const Messenger = () => {
     useEffect(() => {
         const getMessages = async () => {
             try {
-                const res = await axios.get("/messages/" + currentChat?._id);
+                const res = await axios.get("https://socialappwithmessengerbackend.onrender.com/messages/" + currentChat?._id);
                 setMessages(res.data);
             } catch (err) { console.log(err) }
         }
@@ -97,7 +97,7 @@ const Messenger = () => {
         });
 
         try {
-            const res = await axios.post("/messages", message);
+            const res = await axios.post("https://socialappwithmessengerbackend.onrender.com/messages", message);
             setMessages([...messages, res.data]);
             setNewMessage("");
 

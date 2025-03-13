@@ -30,7 +30,7 @@ export default function Register() {
         return;
       }
       try {
-        await axios.post('/auth/register', formData)
+        await axios.post('https://socialappwithmessengerbackend.onrender.com/auth/register', formData)
         console.log('Submitting to API:', formData);
         navigate('/login')
       } catch (err) {

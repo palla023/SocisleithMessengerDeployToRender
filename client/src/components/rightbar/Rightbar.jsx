@@ -28,7 +28,7 @@ export default function Rightbar({ user }) {
   const getFriends = async () => {
     try {
       // console.log(user._id)
-      const res = await axios.get('/users/friends/' + user._id);
+      const res = await axios.get('https://socialappwithmessengerbackend.onrender.com/users/friends/' + user._id);
       setFriends(res.data)
       // console.log(res.data)
     } catch (e) {
@@ -43,12 +43,12 @@ export default function Rightbar({ user }) {
     try {
         if (followed) {
             // Unfollow user
-            await axios.put(`/users/${user._id}/follow`, { userId: currentUserId });
+            await axios.put(`https://socialappwithmessengerbackend.onrender.com/users/${user._id}/follow`, { userId: currentUserId });
             dispatch({ type: "UNFOLLOW", payload: { userId: user._id, currentUserId: currentUserId } });
             setFollowed(false); // Update state to reflect unfollow
         } else {
             // Follow user
-            await axios.put(`/users/${user._id}/follow`, { userId: currentUserId });
+            await axios.put(`https://socialappwithmessengerbackend.onrender.com/users/${user._id}/follow`, { userId: currentUserId });
             dispatch({ type: "FOLLOW", payload: { userId: user._id, currentUserId: currentUserId} });
             setFollowed(true); // Update state to reflect follow
         }
