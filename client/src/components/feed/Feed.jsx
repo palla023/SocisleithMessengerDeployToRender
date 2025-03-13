@@ -12,12 +12,16 @@ export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
   // console.log(username);
   const { user } = useContext(AuthContext);
+  const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/api"
+    : "https://socialappwithmessengerbackend.onrender.com";
 
   useEffect(() => {
     const fetchposts = async () => {
       const res = username
-        ? await axios.get('https://socialappwithmessengerbackend.onrender.com/posts/profile/' + username)
-        : await axios.get('https://socialappwithmessengerbackend.onrender.com/posts/timeline/' + user._id);
+        ? await axios.get(`${BASE_URL}/posts/profile/` + username)
+        : await axios.get(`${BASE_URL}/posts/timeline/` + user._id);
       // Sorting the Data , that will get our uploaded posts at the top of the Page
       setPosts(
         res.data.sort((p1, p2) => {

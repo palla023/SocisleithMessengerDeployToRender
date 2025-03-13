@@ -19,6 +19,10 @@ export default function Register() {
   const submitHandler = (e) => {
     e.preventDefault();
     // console.log(formData);
+    const BASE_URL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:5000/api"
+      : "https://socialappwithmessengerbackend.onrender.com";
 
     const PostRegistrationForm = async () => {
       if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
@@ -30,7 +34,7 @@ export default function Register() {
         return;
       }
       try {
-        await axios.post('https://socialappwithmessengerbackend.onrender.com/auth/register', formData)
+        await axios.post(`${BASE_URL}/auth/register`, formData)
         console.log('Submitting to API:', formData);
         navigate('/login')
       } catch (err) {

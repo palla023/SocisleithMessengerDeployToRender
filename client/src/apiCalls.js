@@ -1,11 +1,15 @@
 import axios from 'axios';
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/api"
+    : "https://socialappwithmessengerbackend.onrender.com";
 
 export const loginCall = async (userCredentials, dispatch) => {
     dispatch({
         type: 'LOGIN_START',
     })
     try {
-        const res = await axios.post("https://socialappwithmessengerbackend.onrender.com/auth/login", userCredentials);
+        const res = await axios.post(`${BASE_URL}/auth/login`, userCredentials);
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         // console.log(res.data)
         // alert(res.message)
